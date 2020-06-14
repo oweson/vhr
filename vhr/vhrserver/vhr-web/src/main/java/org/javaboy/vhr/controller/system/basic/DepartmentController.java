@@ -22,10 +22,21 @@ import java.util.List;
 public class DepartmentController {
     @Autowired
     DepartmentService departmentService;
+
+    /**
+     * 1 查询父类目录
+     * 过 20200503
+     */
     @GetMapping("/")
     public List<Department> getAllDepartments() {
-        return departmentService.getAllDepartments();
+        List<Department> allDepartments = departmentService.getAllDepartments();
+        return allDepartments;
     }
+
+    /**
+     * 2 添加部门：
+     * todo 存储过程
+     */
     @PostMapping("/")
     public RespBean addDep(@RequestBody Department dep) {
         departmentService.addDep(dep);
@@ -35,6 +46,10 @@ public class DepartmentController {
         return RespBean.error("添加失败");
     }
 
+    /**
+     * 3 删除部门
+     * todo 存储过程
+     */
     @DeleteMapping("/{id}")
     public RespBean deleteDepById(@PathVariable Integer id) {
         Department dep = new Department();

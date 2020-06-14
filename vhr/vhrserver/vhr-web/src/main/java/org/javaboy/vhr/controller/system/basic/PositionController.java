@@ -22,11 +22,15 @@ import java.util.List;
 public class PositionController {
     @Autowired
     PositionService positionService;
+
     @GetMapping("/")
     public List<Position> getAllPositions() {
         return positionService.getAllPositions();
     }
 
+    /**
+     * 过 20200502
+     */
     @PostMapping("/")
     public RespBean addPosition(@RequestBody Position position) {
         if (positionService.addPosition(position) == 1) {
@@ -35,6 +39,9 @@ public class PositionController {
         return RespBean.error("添加失败!");
     }
 
+    /**
+     * 过 20200502
+     */
     @PutMapping("/")
     public RespBean updatePositions(@RequestBody Position position) {
         if (positionService.updatePositions(position) == 1) {
@@ -43,6 +50,9 @@ public class PositionController {
         return RespBean.error("更新失败!");
     }
 
+    /**
+     * 过 20200502
+     */
     @DeleteMapping("/{id}")
     public RespBean deletePositionById(@PathVariable Integer id) {
         if (positionService.deletePositionById(id) == 1) {
@@ -51,6 +61,9 @@ public class PositionController {
         return RespBean.error("删除失败!");
     }
 
+    /**
+     * 过 20200502
+     */
     @DeleteMapping("/")
     public RespBean deletePositionsByIds(Integer[] ids) {
         if (positionService.deletePositionsByIds(ids) == ids.length) {

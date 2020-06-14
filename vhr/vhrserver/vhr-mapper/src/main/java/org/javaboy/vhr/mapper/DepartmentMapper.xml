@@ -25,6 +25,27 @@
     <select id="addDep" statementType="CALLABLE">
     call addDep(#{name,mode=IN,jdbcType=VARCHAR},#{parentId,mode=IN,jdbcType=INTEGER},#{enabled,mode=IN,jdbcType=BOOLEAN},#{result,mode=OUT,jdbcType=INTEGER},#{id,mode=OUT,jdbcType=INTEGER})
   </select>
+     <!--存储过程的调用统一使用select节点，同时要明确指定statementType="CALLABLE";
+    begin
+  declare ecount int;
+  declare pid int;
+  declare pcount int;
+  declare a int;
+  select count(*) into a from department where id=did and isParent=false;
+  if a=0 then set result=-2;
+  else
+  select count(*) into ecount from employee where departmentId=did;
+  if ecount>0 then set result=-1;
+  else
+  select parentId into pid from department where id=did;
+  delete from department where id=did and isParent=false;
+  select row_count() into result;
+  select count(*) into pcount from department where parentId=pid;
+  if pcount=0 then update department set isParent=false where id=pid;
+  end if;
+  end if;
+  end if;
+end-->
     <select id="deleteDepById" statementType="CALLABLE">
     call deleteDep(#{id,mode=IN,jdbcType=INTEGER},#{result,mode=OUT,jdbcType=INTEGER})
   </select>

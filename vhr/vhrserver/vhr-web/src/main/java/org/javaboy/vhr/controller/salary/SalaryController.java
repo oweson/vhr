@@ -14,11 +14,18 @@ public class SalaryController {
     @Autowired
     SalaryService salaryService;
 
+    /**
+     * 1 查询所有工资账套
+     * 过 20200503
+     */
     @GetMapping("/")
     public List<Salary> getAllSalaries() {
         return salaryService.getAllSalaries();
     }
-
+    /**
+     * 2 添加工资账套
+     * 过 20200503
+     */
     @PostMapping("/")
     public RespBean addSalary(@RequestBody Salary salary) {
         if (salaryService.addSalary(salary) == 1) {
@@ -26,7 +33,10 @@ public class SalaryController {
         }
         return RespBean.error("添加失败!");
     }
-
+    /**
+     * 3 删除工资账套
+     * 过 20200503
+     */
     @DeleteMapping("/{id}")
     public RespBean deleteSalaryById(@PathVariable Integer id) {
         if (salaryService.deleteSalaryById(id) == 1) {
@@ -34,7 +44,10 @@ public class SalaryController {
         }
         return RespBean.error("删除失败！");
     }
-
+    /**
+     * 4 更新工资账套
+     * 过 20200503
+     */
     @PutMapping("/")
     public RespBean updateSalaryById(@RequestBody Salary salary) {
         if (salaryService.updateSalaryById(salary) == 1) {

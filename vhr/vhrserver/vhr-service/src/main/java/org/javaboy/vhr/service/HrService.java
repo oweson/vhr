@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.beans.Encoder;
 import java.util.List;
 
 /**
@@ -47,7 +48,7 @@ public class HrService implements UserDetailsService {
     public Integer updateHr(Hr hr) {
         return hrMapper.updateByPrimaryKeySelective(hr);
     }
-
+    // 删除原先的插入新的数据
     @Transactional
     public boolean updateHrRole(Integer hrid, Integer[] rids) {
         hrRoleMapper.deleteByHrid(hrid);
@@ -63,6 +64,7 @@ public class HrService implements UserDetailsService {
     }
 
     public Integer updateHyById(Hr hr) {
+
         return hrMapper.updateByPrimaryKeySelective(hr);
     }
 
