@@ -18,18 +18,28 @@ public class SobConfigController {
     EmployeeService employeeService;
     @Autowired
     SalaryService salaryService;
-
+    /**
+     * 1 查询所有工资账套
+     * 过 20200503
+     */
     @GetMapping("/")
     public RespPageBean getEmployeeByPageWithSalary(@RequestParam(defaultValue = "1") Integer page,
                                                     @RequestParam(defaultValue = "10") Integer size) {
         return employeeService.getEmployeeByPageWithSalary(page, size);
     }
-
+    /**
+     * 2 查询所有工资账套
+     * 过 20200503
+     */
     @GetMapping("/salaries")
     public List<Salary> getAllSalaries() {
         return salaryService.getAllSalaries();
     }
-
+    /**
+     * 3 更新员工的工资账套
+     * 过 20200503
+     * todo 为何1或者2？？？
+     */
     @PutMapping("/")
     public RespBean updateEmployeeSalaryById(Integer eid, Integer sid) {
         Integer result = employeeService.updateEmployeeSalaryById(eid, sid);

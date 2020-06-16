@@ -20,6 +20,7 @@ import java.util.List;
  */
 @Service
 public class PositionService {
+    /** 过 20200502*/
     @Autowired
     PositionMapper positionMapper;
     public List<Position> getAllPositions() {

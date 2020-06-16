@@ -96,6 +96,9 @@
             limit #{page},#{size}
         </if>
     </select>
+    <!--replace into 影响行数，谈起影响行数，先理解replace into 原理：
+    其是先到表里通过一定规则（单主键或复合主键或唯一索引）找到记录，并且删除，然后在insert into 记录，
+    即如果原来是有记录的，则先删除然后再插入，如果没有则直接插入，即影响函数为1条或者2条。-->
     <insert id="updateEmployeeSalaryById">
         REPLACE INTO empsalary (eid,sid) VALUES(#{eid},#{sid})
     </insert>

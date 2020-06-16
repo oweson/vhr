@@ -36,7 +36,7 @@ public class HrInfoController {
     public Hr getCurrentHr(Authentication authentication) {
         return ((Hr) authentication.getPrincipal());
     }
-
+    /** 过 20200502*/
     @PutMapping("/hr/info")
     public RespBean updateHr(@RequestBody Hr hr, Authentication authentication) {
         if (hrService.updateHr(hr) == 1) {

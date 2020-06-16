@@ -26,12 +26,16 @@ public class HrController {
     HrService hrService;
     @Autowired
     RoleService roleService;
+<<<<<<< HEAD
 
+=======
+    // todo
+>>>>>>> 40d2350a6160da29dd975edcea0aef78b3befed6
     @GetMapping("/")
     public List<Hr> getAllHrs(String keywords) {
         return hrService.getAllHrs(keywords);
     }
-
+    /** 过 20200502*/
     @PutMapping("/")
     public RespBean updateHr(@RequestBody Hr hr) {
         if (hrService.updateHr(hr) == 1) {
@@ -39,12 +43,16 @@ public class HrController {
         }
         return RespBean.error("更新失败!");
     }
+<<<<<<< HEAD
 
+=======
+    /** 过 20200502*/
+>>>>>>> 40d2350a6160da29dd975edcea0aef78b3befed6
     @GetMapping("/roles")
     public List<Role> getAllRoles() {
         return roleService.getAllRoles();
     }
-
+    /** 过 20200502*/
     @PutMapping("/role")
     public RespBean updateHrRole(Integer hrid, Integer[] rids) {
         if (hrService.updateHrRole(hrid, rids)) {

@@ -24,11 +24,12 @@ public class JobLevelController {
     @Autowired
     JobLevelService jobLevelService;
 
+    /** 过 20200502*/
     @GetMapping("/")
     public List<JobLevel> getAllJobLevels() {
         return jobLevelService.getAllJobLevels();
     }
-
+    /** 过 20200502*/
     @PostMapping("/")
     public RespBean addJobLevel(@RequestBody JobLevel jobLevel) {
         if (jobLevelService.addJobLevel(jobLevel) == 1) {
@@ -36,7 +37,7 @@ public class JobLevelController {
         }
         return RespBean.error("添加失败!");
     }
-
+    /** 过 20200502*/
     @PutMapping("/")
     public RespBean updateJobLevelById(@RequestBody JobLevel jobLevel) {
         if (jobLevelService.updateJobLevelById(jobLevel) == 1) {
@@ -44,7 +45,7 @@ public class JobLevelController {
         }
         return RespBean.error("更新失败!");
     }
-
+    /** 过 20200502*/
     @DeleteMapping("/{id}")
     public RespBean deleteJobLevelById(@PathVariable Integer id) {
         if (jobLevelService.deleteJobLevelById(id) == 1) {
@@ -52,7 +53,7 @@ public class JobLevelController {
         }
         return RespBean.error("删除失败!");
     }
-
+    /** 过 20200502*/
     @DeleteMapping("/")
     public RespBean deleteJobLevelsByIds(Integer[] ids) {
         if (jobLevelService.deleteJobLevelsByIds(ids) == ids.length) {
