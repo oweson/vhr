@@ -12,7 +12,7 @@ public class JobLevel implements Serializable {
     private String name;
 
     private String titleLevel;
-
+   // 仅仅一个名字相同就是true;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

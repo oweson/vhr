@@ -40,7 +40,8 @@ public class HrInfoController {
     @PutMapping("/hr/info")
     public RespBean updateHr(@RequestBody Hr hr, Authentication authentication) {
         if (hrService.updateHr(hr) == 1) {
-            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(hr, authentication.getCredentials(), authentication.getAuthorities()));
+            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(hr, authentication.getCredentials(),
+                    authentication.getAuthorities()));
             return RespBean.ok("更新成功!");
         }
         return RespBean.error("更新失败!");
@@ -60,11 +61,13 @@ public class HrInfoController {
     @PostMapping("/hr/userface")
     public RespBean updateHrUserface(MultipartFile file, Integer id,Authentication authentication) {
         String fileId = FastDFSUtils.upload(file);
+        // 用户上传头像信息；成功后返回文件名，后续访问需要这个文件名
         String url = nginxHost + fileId;
         if (hrService.updateUserface(url, id) == 1) {
             Hr hr = (Hr) authentication.getPrincipal();
             hr.setUserface(url);
-            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(hr, authentication.getCredentials(), authentication.getAuthorities()));
+            SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(hr, authentication.getCredentials(),
+                    authentication.getAuthorities()));
             return RespBean.ok("更新成功!", url);
         }
         return RespBean.error("更新失败!");

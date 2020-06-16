@@ -26,6 +26,7 @@ public class HrController {
     HrService hrService;
     @Autowired
     RoleService roleService;
+
     @GetMapping("/")
     public List<Hr> getAllHrs(String keywords) {
         return hrService.getAllHrs(keywords);
@@ -38,6 +39,7 @@ public class HrController {
         }
         return RespBean.error("更新失败!");
     }
+
     @GetMapping("/roles")
     public List<Role> getAllRoles() {
         return roleService.getAllRoles();
@@ -49,6 +51,16 @@ public class HrController {
             return RespBean.ok("更新成功!");
         }
         return RespBean.error("更新失败!");
+    }
+
+    @PutMapping("batchUpdateRoles")
+
+    public RespBean updateHrRoles(Integer hrId, Integer[] ids) {
+        if (hrService.updateHrRole(hrId, ids)) {
+            return RespBean.ok("更新成功了");
+
+        }
+        return RespBean.error("更新失败了");
     }
 
     @DeleteMapping("/{id}")

@@ -274,7 +274,9 @@ public class POIUtils {
                                         employee.setWedlock(cellValue);
                                         break;
                                     case 7:
+                                        // 重写了hash和equals只要一个名字相同就是相同的对象
                                         int nationIndex = allNations.indexOf(new Nation(cellValue));
+                                        // 逻辑外键关联，todo 加入找不到呢？
                                         employee.setNationId(allNations.get(nationIndex).getId());
                                         break;
                                     case 8:

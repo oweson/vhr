@@ -23,6 +23,7 @@ import java.util.List;
 public class JobLevelController {
     @Autowired
     JobLevelService jobLevelService;
+
     @GetMapping("/")
     public List<JobLevel> getAllJobLevels() {
         return jobLevelService.getAllJobLevels();
@@ -58,5 +59,14 @@ public class JobLevelController {
             return RespBean.ok("删除成功!");
         }
         return RespBean.error("删除失败!");
+    }
+    //----------------------------
+
+    @DeleteMapping("deleteSth")
+    public RespBean deleteJobLeverByIds(Integer[] ids) {
+        if (jobLevelService.deleteJobLevelsByIds(ids) == ids.length) {
+            return RespBean.ok("批量删除成功");
+        }
+        return RespBean.error("删除批量失败");
     }
 }

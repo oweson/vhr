@@ -43,4 +43,8 @@ public class JobLevelService {
     public Integer deleteJobLevelsByIds(Integer[] ids) {
         return jobLevelMapper.deleteJobLevelsByIds(ids);
     }
+
+    public Integer batchDelete(Integer[] ids){
+        return jobLevelMapper.deleteJobLevelsByIds(ids);
+    }
 }

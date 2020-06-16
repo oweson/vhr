@@ -55,7 +55,8 @@ public class EmployeeService {
     public Integer addEmp(Employee employee) {
         Date beginContract = employee.getBeginContract();
         Date endContract = employee.getEndContract();
-        double month = (Double.parseDouble(yearFormat.format(endContract)) - Double.parseDouble(yearFormat.format(beginContract))) * 12 + (Double.parseDouble(monthFormat.format(endContract)) - Double.parseDouble(monthFormat.format(beginContract)));
+        double month = (Double.parseDouble(yearFormat.format(endContract)) - Double.parseDouble(yearFormat.format(beginContract))) * 12
+                + (Double.parseDouble(monthFormat.format(endContract)) - Double.parseDouble(monthFormat.format(beginContract)));
         employee.setContractTerm(Double.parseDouble(decimalFormat.format(month / 12)));
         int result = employeeMapper.insertSelective(employee);
         if (result == 1) {
@@ -70,6 +71,7 @@ public class EmployeeService {
             mailSendLog.setEmpId(emp.getId());
             mailSendLog.setTryTime(new Date(System.currentTimeMillis() + 1000 * 60 * MailConstants.MSG_TIMEOUT));
             mailSendLogService.insert(mailSendLog);
+            // todo msgId消息的唯一ID
             rabbitTemplate.convertAndSend(MailConstants.MAIL_EXCHANGE_NAME, MailConstants.MAIL_ROUTING_KEY_NAME, emp, new CorrelationData(msgId));
         }
         return result;

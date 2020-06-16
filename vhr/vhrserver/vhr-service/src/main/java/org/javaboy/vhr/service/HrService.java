@@ -41,7 +41,7 @@ public class HrService implements UserDetailsService {
     }
 
     public List<Hr> getAllHrs(String keywords) {
-        return hrMapper.getAllHrs(HrUtils.getCurrentHr().getId(),keywords);
+        return hrMapper.getAllHrs(HrUtils.getCurrentHr().getId(), keywords);
     }
 
     public Integer updateHr(Hr hr) {
@@ -52,6 +52,12 @@ public class HrService implements UserDetailsService {
     public boolean updateHrRole(Integer hrid, Integer[] rids) {
         hrRoleMapper.deleteByHrid(hrid);
         return hrRoleMapper.addRole(hrid, rids) == rids.length;
+    }
+
+    @Transactional
+    public boolean updateBatchRole(Integer hrId, Integer[] ids) {
+        hrRoleMapper.deleteByHrid(hrId);
+        return hrRoleMapper.addRole(hrId, ids) == ids.length;
     }
 
     public Integer deleteHrById(Integer id) {
@@ -78,8 +84,43 @@ public class HrService implements UserDetailsService {
         }
         return false;
     }
+    // 修改密码
+
+    public boolean upfateRoleById(String oldpass, String pass, Integer hrId) {
+        Hr hr = hrMapper.selectByPrimaryKey(hrId);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (encoder.matches(oldpass, hr.getPassword())) {
+            // 密码想等
+            String encode = encoder.encode(oldpass);
+            // 加密新的密码
+            Integer integer = hrMapper.updatePasswd(hrId, encode);
+            if (integer == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 2 修改密码2
+    public boolean updateUserPassword(String oldPassword, String newPassword, Integer hrId) {
+        Hr hr = hrMapper.selectByPrimaryKey(hrId);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (encoder.matches(oldPassword, hr.getPassword())) {
+            // 密码相同
+            String encode = encoder.encode(newPassword);
+            Integer integer = hrMapper.updatePasswd(hrId, encode);
+            if (integer == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public Integer updateUserface(String url, Integer id) {
+        return hrMapper.updateUserface(url, id);
+    }
+
+    public Integer updateUserFace(String url, Integer id) {
         return hrMapper.updateUserface(url, id);
     }
 }
