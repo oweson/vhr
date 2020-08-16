@@ -19,6 +19,169 @@
 
     <dependencies>
         <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.2.0.Final</version>
+        </dependency>
+        <!-- http://modelmapper.org/getting-started/-->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <!--新的excel工具1kstar-->
+        <dependency>
+            <groupId>com.github.liaochong</groupId>
+            <artifactId>myexcel</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <!--新的excel工具1kstar-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.sargeraswang.util</groupId>-->
+        <!--            <artifactId>excel-util</artifactId>-->
+        <!--        </dependency>-->
+        <!--**************扩展*************-->
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>3.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+        <!--通用mapper-->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+        <!--通用mapper-->
+
+        <!--快速的bean复制工具-->
+
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>1.5.2</version>
+        </dependency>
+        <!--快速的bean复制工具-->
+
+        <!-- 控制台 SQL日志打印插件 -->
+        <dependency>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <!--http-->
+        <!--http-->
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-osgi</artifactId>
+        </dependency>
+        <!--http-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>el-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <!--jsr303-->
+
+        <!-- fastJson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.41</version>
+        </dependency>
+
+        <!-- mybatis pager -->
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <!--20200816复制依赖-->
+        <dependency>
             <groupId>org.javaboy</groupId>
             <artifactId>vhr-service</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -47,6 +210,7 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -65,6 +229,57 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>cn.smallbun.screw</groupId>
+                <artifactId>screw-maven-plugin</artifactId>
+                <version>1.0.4</version>
+                <dependencies>
+                    <!-- HikariCP -->
+                    <dependency>
+                        <groupId>com.zaxxer</groupId>
+                        <artifactId>HikariCP</artifactId>
+                        <version>3.4.5</version>
+                    </dependency>
+                    <!--mysql driver-->
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.20</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <!--username-->
+                    <username>root</username>
+                    <!--password-->
+                    <password>111111</password>
+                    <!--driver-->
+                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
+                    <!--jdbc url-->
+                    <jdbcUrl>jdbc:mysql://127.0.0.1:3307/vhr?serverTimezone=Asia/Shanghai</jdbcUrl>
+                    <!--生成文件类型-->
+                    <fileType>HTML</fileType>
+                    <!--打开文件输出目录-->
+                    <openOutputDir>false</openOutputDir>
+                    <!--生成模板-->
+                    <produceType>freemarker</produceType>
+                    <!--文档名称 为空时:将采用[数据库名称-描述-版本号]作为文档名称-->
+                    <fileName>测试文档名称</fileName>
+                    <!--描述-->
+                    <description>数据库文档生成</description>
+                    <!--版本-->
+                    <version>1.0.4</version>
+                    <!--标题-->
+                    <title>数据库文档</title>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
