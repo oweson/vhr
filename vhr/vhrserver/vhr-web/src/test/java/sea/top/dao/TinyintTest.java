@@ -1,4 +1,4 @@
-package sea.top.tinyint;
+package sea.top.dao;
 
 import org.javaboy.vhr.VhrApplication;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package sea.top.dao;
+package sea.top.mq;
 
 import org.javaboy.vhr.VhrApplicationTests;
 import org.javaboy.vhr.model.FishConstants;
