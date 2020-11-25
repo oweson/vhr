@@ -10,6 +10,7 @@ spring:
     username: guest
     password: guest
     host: 139.224.35.86
+    ## 发布确认模式开启
     publisher-confirms: true
     publisher-returns: true
   redis:

@@ -53,22 +53,23 @@ public class EmployeeService {
     }
 
     public Integer addEmp(Employee employee) {
-        Date beginContract = employee.getBeginContract();
+        Date beginContract = employee.getBeginContract();// 开始和结束合同的期限3月1号
         Date endContract = employee.getEndContract();
         double month = (Double.parseDouble(yearFormat.format(endContract)) - Double.parseDouble(yearFormat.format(beginContract))) * 12
                 + (Double.parseDouble(monthFormat.format(endContract)) - Double.parseDouble(monthFormat.format(beginContract)));
         employee.setContractTerm(Double.parseDouble(decimalFormat.format(month / 12)));
         int result = employeeMapper.insertSelective(employee);
-        if (result == 1) {
+        if (result == 1) {// 插入成功
             Employee emp = employeeMapper.getEmployeeById(employee.getId());
             //生成消息的唯一id
-            String msgId = UUID.randomUUID().toString();
+            String msgId = UUID.randomUUID().toString();// 发送之前插入日志
             MailSendLog mailSendLog = new MailSendLog();
             mailSendLog.setMsgId(msgId);
             mailSendLog.setCreateTime(new Date());
             mailSendLog.setExchange(MailConstants.MAIL_EXCHANGE_NAME);
             mailSendLog.setRouteKey(MailConstants.MAIL_ROUTING_KEY_NAME);
             mailSendLog.setEmpId(emp.getId());
+            // 一分钟以后重试投递；
             mailSendLog.setTryTime(new Date(System.currentTimeMillis() + 1000 * 60 * MailConstants.MSG_TIMEOUT));
             mailSendLogService.insert(mailSendLog);
             // todo msgId消息的唯一ID

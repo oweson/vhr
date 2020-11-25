@@ -22,7 +22,7 @@ public class MailSendTask {
     RabbitTemplate rabbitTemplate;
     @Autowired
     EmployeeService employeeService;
-    @Scheduled(cron = "0/10 * * * * ?")
+    @Scheduled(cron = "0/10 * * * * ?")// 及时的消费就更改日志的状态
     public void mailResendTask() {
         List<MailSendLog> logs = mailSendLogService.getMailSendLogsByStatus();
         if (logs == null || logs.size() == 0) {
@@ -30,7 +30,8 @@ public class MailSendTask {
         }
         logs.forEach(mailSendLog->{
             if (mailSendLog.getCount() >= 3) {
-                mailSendLogService.updateMailSendLogStatus(mailSendLog.getMsgId(), 2);//直接设置该条消息发送失败
+                mailSendLogService.updateMailSendLogStatus(mailSendLog.getMsgId(), 2);// 直接按照失败处理
+                //直接设置该条消息发送失败
             }else{
                 mailSendLogService.updateCount(mailSendLog.getMsgId(), new Date());
                 Employee emp = employeeService.getEmployeeById(mailSendLog.getEmpId());

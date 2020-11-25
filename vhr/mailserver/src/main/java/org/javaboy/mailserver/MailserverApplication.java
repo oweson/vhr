@@ -1,5 +1,6 @@
 package org.javaboy.mailserver;
 
+import org.javaboy.vhr.model.FishConstants;
 import org.javaboy.vhr.model.MailConstants;
 import org.springframework.amqp.core.Queue;
 import org.springframework.boot.SpringApplication;
@@ -16,5 +17,10 @@ public class MailserverApplication {
     @Bean
     Queue queue() {
         return new Queue(MailConstants.MAIL_QUEUE_NAME);
+    }
+
+    @Bean
+    Queue fishQueue() {
+        return new Queue(FishConstants.OWESON_FISH_QUEUE_NAME);
     }
 }

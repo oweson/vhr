@@ -61,7 +61,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             sessionRegistry.registerNewSession(request.getSession(true).getId(), principal);
             return this.getAuthenticationManager().authenticate(authRequest);
         } else {
-            checkCode(response, request.getParameter("code"), verify_code);
+//            checkCode(response, request.getParameter("code"), verify_code);
             return super.attemptAuthentication(request, response);
         }
     }

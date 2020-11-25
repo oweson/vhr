@@ -9,7 +9,7 @@
     <insert id="insert" parameterType="org.javaboy.vhr.model.MailSendLog">
         insert into mail_send_log (msgId,empId,routeKey,exchange,tryTime,createTime) values (#{msgId},#{empId},#{routeKey},#{exchange},#{tryTime},#{createTime});
     </insert>
-
+    <!--比较系统日期&lt;-->
     <select id="getMailSendLogsByStatus" resultType="org.javaboy.vhr.model.MailSendLog">
         select * from mail_send_log where status=0 and tryTime &lt; sysdate()
     </select>
