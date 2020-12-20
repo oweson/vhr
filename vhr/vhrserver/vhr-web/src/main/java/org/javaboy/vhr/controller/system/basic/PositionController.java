@@ -51,11 +51,11 @@ public class PositionController {
     }
 
     @PutMapping("/me/")
-    public RespBean updateByMe(@RequestBody Position position){
-        if(positionService.updatePositions(position)==1){
+    public RespBean updateByMe(@RequestBody Position position) {
+        if (positionService.updatePositions(position) == 1) {
             return RespBean.ok("更新职位成功");
         }
-        return  RespBean.error("更新职位失败");
+        return RespBean.error("更新职位失败");
     }
 
     /**
@@ -69,11 +69,15 @@ public class PositionController {
         return RespBean.error("删除失败!");
     }
 
-
+    /**
+     * 过！
+     * @param id
+     * @return
+     */
     @DeleteMapping("me/{id}")
-    public RespBean deleteByMe(@PathVariable Integer id){
-        if(positionService.deletePositionById(id)==1){
-            return  RespBean.ok("删除成功楼");
+    public RespBean deleteByMe(@PathVariable Integer id) {
+        if (positionService.deletePositionById(id) == 1) {
+            return RespBean.ok("删除成功喽");
         }
         return RespBean.error("删除失败了");
     }
@@ -90,9 +94,8 @@ public class PositionController {
     }
 
     @DeleteMapping("deletePosition")
-
-    public RespBean deleteBatchPosition(Integer[] ids){
-        if(positionService.deletePositionsByIds(ids)==ids.length){
+    public RespBean deleteBatchPosition(Integer[] ids) {
+        if (positionService.deletePositionsByIds(ids) == ids.length) {
             return RespBean.ok("批量删除职位成功");
         }
         return RespBean.error("批量删除职位失败");

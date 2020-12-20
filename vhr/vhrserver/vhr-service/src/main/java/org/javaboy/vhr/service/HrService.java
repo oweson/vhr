@@ -48,14 +48,15 @@ public class HrService implements UserDetailsService {
     public Integer updateHr(Hr hr) {
         return hrMapper.updateByPrimaryKeySelective(hr);
     }
+
     // 删除原先的插入新的数据
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean updateHrRole(Integer hrid, Integer[] rids) {
         hrRoleMapper.deleteByHrid(hrid);
         return hrRoleMapper.addRole(hrid, rids) == rids.length;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean updateBatchRole(Integer hrId, Integer[] ids) {
         hrRoleMapper.deleteByHrid(hrId);
         return hrRoleMapper.addRole(hrId, ids) == ids.length;

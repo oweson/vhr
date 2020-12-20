@@ -27,3 +27,4 @@ server:
 fastdfs:
   nginx:
     host: http://192.168.91.128/
+

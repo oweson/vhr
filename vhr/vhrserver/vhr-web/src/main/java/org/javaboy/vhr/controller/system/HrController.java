@@ -27,12 +27,14 @@ public class HrController {
     @Autowired
     RoleService roleService;
 
-    // todo
     @GetMapping("/")
     public List<Hr> getAllHrs(String keywords) {
         return hrService.getAllHrs(keywords);
     }
-    /** 过 20200502*/
+
+    /**
+     * 过 20200502
+     */
     @PutMapping("/")
     public RespBean updateHr(@RequestBody Hr hr) {
         if (hrService.updateHr(hr) == 1) {
@@ -41,12 +43,17 @@ public class HrController {
         return RespBean.error("更新失败!");
     }
 
-    /** 过 20200502*/
+    /**
+     * 过 20200502
+     */
     @GetMapping("/roles")
     public List<Role> getAllRoles() {
         return roleService.getAllRoles();
     }
-    /** 过 20200502*/
+
+    /**
+     * 过 20200502
+     */
     @PutMapping("/role")
     public RespBean updateHrRole(Integer hrid, Integer[] rids) {
         if (hrService.updateHrRole(hrid, rids)) {
@@ -56,7 +63,6 @@ public class HrController {
     }
 
     @PutMapping("batchUpdateRoles")
-
     public RespBean updateHrRoles(Integer hrId, Integer[] ids) {
         if (hrService.updateHrRole(hrId, ids)) {
             return RespBean.ok("更新成功了");
@@ -65,6 +71,11 @@ public class HrController {
         return RespBean.error("更新失败了");
     }
 
+    /**
+     * 过！20201220
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{id}")
     public RespBean deleteHrById(@PathVariable Integer id) {
         if (hrService.deleteHrById(id) == 1) {
